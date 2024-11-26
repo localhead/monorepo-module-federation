@@ -1,4 +1,3 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const StyledShopPage = styled.div`
-`;
+export const StyledMainPage = styled.div``;

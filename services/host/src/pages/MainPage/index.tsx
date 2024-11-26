@@ -1,7 +1,7 @@
 import React, { FC, memo } from "react";
 
-import placeholder from "@assets/images/placeholderImageGray.png";
-import { AlarmIcon } from "@packages/icons";
+import { calcNumbers } from "@packages/shared";
+import { Link } from "react-router-dom";
 import { StyledMainPage } from "./styles";
 export interface MainPageProps {
   className?: string;
@@ -11,11 +11,21 @@ export interface MainPageProps {
 const _MainPage: FC<MainPageProps> = (props) => {
   const { ...restProps } = props;
 
+  const calc = calcNumbers(2, 5);
+
   return (
     <StyledMainPage {...restProps}>
-      <img src={placeholder} width={75} height={50} />
-      <AlarmIcon size={50} color="black" />
-      <h3>{__PLATFORM__}</h3>
+      <h3>
+        {__PLATFORM__}
+        {calc}
+      </h3>
+      <h2> 
+        <Link to={"/admin"}>Admin page</Link>
+      </h2>
+      <br />
+      <h2>
+        <Link to={"/shop"}>Shop page</Link>
+      </h2>
     </StyledMainPage>
   );
 };

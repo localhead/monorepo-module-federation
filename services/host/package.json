@@ -1,18 +1,6 @@
 {
-  "name": "src",
+  "name": "host",
   "version": "1.0.0",
-  "main": "./src/index.ts",
-  "scripts": {
-    "start": "webpack serve --env port=3000",
-    "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production",
-    "build:desktop": "webpack --env mode=production --env platform=desktop",
-    "build:mobile": "webpack --env mode=production --env platform=mobile",
-    "type-check": "tsc"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@packages/shared": "*",
     "@packages/build-config": "*",
@@ -22,6 +10,14 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
     "styled-components": "^6.1.13"
+  },
+  "scripts": {
+    "start": "webpack serve --env port=3000",
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "build:desktop": "webpack --env mode=production --env platform=desktop",
+    "build:mobile": "webpack --env mode=production --env platform=mobile",
+    "type-check": "tsc"
   },
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",

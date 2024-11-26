@@ -1,27 +1,28 @@
 import React, { FC, memo } from "react";
 
 import { Link } from "react-router-dom";
-export interface ShopPageProps {
+
+export interface AdminPageProps {
   className?: string;
   style?: React.CSSProperties;
 }
 
-const _ShopPage: FC<ShopPageProps> = (props) => {
+const _AdminPage: FC<AdminPageProps> = (props) => {
   const { ...restProps } = props;
 
   return (
     <div {...restProps}>
-      <h3>This is Shop Page</h3>
+      <h3>This is Admin page</h3>
       <br />
       <h2>
-        <Link to={"/admin"}>to Admin page</Link>
+        <Link to={"/"}>Main page</Link>
       </h2>
       <br />
       <h2>
-        <Link to={"/"}>to Main page</Link>
+        <Link to={"/shop"}>Shop page</Link>
       </h2>
     </div>
   );
 };
 
-export const ShopPage = memo(_ShopPage);
+export const AdminPage = memo(_AdminPage);

@@ -15,11 +15,11 @@ export default (env: EnvVariables) => {
       html: path.resolve(__dirname, "public", "index.html"),
       output: path.resolve(__dirname, "build"),
       public: path.resolve(__dirname, "public"),
+
       alias: {
         "@pages": path.resolve(__dirname, "src/pages"),
         "@utils": path.resolve(__dirname, "src/utils"),
         "@assets": path.resolve(__dirname, "src/assets"),
-        "@packages": path.resolve(__dirname, "src/packages"),
       },
     },
     port: env.port ?? 3000,
@@ -27,8 +27,8 @@ export default (env: EnvVariables) => {
     platform: env.platform ?? "desktop",
   });
 
-  const SHOP_REMOTE_URL = env.SHOP_REMOTE_URL ?? "http://localhost:3001";
-  const ADMIN_REMOTE_URL = env.ADMIN_REMOTE_URL ?? "http://localhost:3002";
+  const ADMIN_REMOTE_URL = env.ADMIN_REMOTE_URL ?? "http://localhost:3001";
+  const SHOP_REMOTE_URL = env.SHOP_REMOTE_URL ?? "http://localhost:3002";
 
   config.plugins.push(
     new webpack.container.ModuleFederationPlugin({
@@ -39,6 +39,7 @@ export default (env: EnvVariables) => {
         shop: `shop@${SHOP_REMOTE_URL}/remoteEntry.js`,
         admin: `admin@${ADMIN_REMOTE_URL}/remoteEntry.js`,
       },
+
       shared: {
         ...packageJson.dependencies,
         react: {

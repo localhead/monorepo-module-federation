@@ -15,14 +15,14 @@ export default (env: EnvVariables) => {
       html: path.resolve(__dirname, "public", "index.html"),
       output: path.resolve(__dirname, "build"),
       public: path.resolve(__dirname, "public"),
+
       alias: {
         "@pages": path.resolve(__dirname, "src/pages"),
         "@utils": path.resolve(__dirname, "src/utils"),
         "@assets": path.resolve(__dirname, "src/assets"),
-        "@packages": path.resolve(__dirname, "src/packages"),
       },
     },
-    port: env.port ?? 3000,
+    port: env.port ?? 3002,
     analyzer: env.analyzer ?? false,
     platform: env.platform ?? "desktop",
   });
@@ -31,25 +31,29 @@ export default (env: EnvVariables) => {
     new webpack.container.ModuleFederationPlugin({
       name: "shop",
       filename: "remoteEntry.js",
+
       exposes: {
         "./Router": "./src/router/Router.tsx",
       },
+
       shared: {
         ...packageJson.dependencies,
         react: {
           eager: true,
-          requiredVersion: packageJson.dependencies["react"],
+          // requiredVersion: packageJson.dependencies['react'],
         },
         "react-router-dom": {
           eager: true,
-          requiredVersion: packageJson.dependencies["react-router-dom"],
+          // requiredVersion: packageJson.dependencies['react-router-dom'],
         },
         "react-dom": {
+          // eager - подгрузка библиотеки сразу
           eager: true,
-          requiredVersion: packageJson.dependencies["react-dom"],
+          // requiredVersion: packageJson.dependencies['react-dom'],
         },
       },
     })
   );
+
   return config;
 };

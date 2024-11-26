@@ -1,18 +1,20 @@
-import { App } from "@/App";
+import { AdminPage } from "@pages/AdminPage";
 import { createBrowserRouter } from "react-router-dom";
+import { App } from "../App";
 
 const routes = [
   {
-    path: "/",
+    path: "/admin",
     element: <App />,
     children: [
       {
-        path: "/about",
-        element: <div>About</div>,
+        path: "/admin",
+        element: <AdminPage />,
       },
     ],
   },
 ];
+
 export const router = createBrowserRouter(routes);
 
 export default routes;
